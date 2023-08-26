@@ -13,6 +13,8 @@ services:
       WORDPRESS_DB_NAME: mohammed_nizam_db
     volumes:
       - wordpress:/var/www/html
+    env_file:
+      - .env 
 
   db:
     image: mysql:5.7
@@ -24,6 +26,8 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql
+    env_file:
+      - .env   
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -34,11 +38,13 @@ services:
       PMA_HOST: db
       PMA_USER: mohammed_nizam
       PMA_PASSWORD: ${PMA_PASSWORD}
+    env_file:
+      - .env   
+
 
 volumes:
   wordpress:
   db:
 
-env_file:
-  - .env
+
 
